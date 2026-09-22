@@ -1,5 +1,4 @@
 // HÜ-Domäne UE 2: Kapselung & Invarianten am Fahrzeug.
-// Regel 2: getter + setGeschwindigkeit mit Invarianten-Check.
 export class Fahrzeug {
   readonly marke: string;
   private _kmStand: number;
@@ -37,7 +36,9 @@ export class Fahrzeug {
     this._geschwindigkeit = v;
   }
 
-  fahre(stunden: number): void {}
+  fahre(stunden: number): void {
+    this._kmStand += this._geschwindigkeit * stunden;
+  }
 
   toString(): string {
     return `${this.marke} (${this._kmStand} km, fährt ${this._geschwindigkeit}/${this.maxGeschwindigkeit} km/h)`;

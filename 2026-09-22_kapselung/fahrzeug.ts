@@ -1,5 +1,5 @@
 // HÜ-Domäne UE 2: Kapselung & Invarianten am Fahrzeug.
-// Regel 1: Fail-Fast im Konstruktor für kmStand.
+// Regel 2: getter + setGeschwindigkeit mit Invarianten-Check.
 export class Fahrzeug {
   readonly marke: string;
   private _kmStand: number;
@@ -28,7 +28,14 @@ export class Fahrzeug {
     return this._geschwindigkeit;
   }
 
-  setGeschwindigkeit(v: number): void {}
+  setGeschwindigkeit(v: number): void {
+    if (v < 0 || v > this.maxGeschwindigkeit) {
+      throw new Error(
+        `Geschwindigkeit ${v} außerhalb von 0..${this.maxGeschwindigkeit} km/h`,
+      );
+    }
+    this._geschwindigkeit = v;
+  }
 
   fahre(stunden: number): void {}
 

@@ -1,0 +1,58 @@
+// HÜ-Domäne UE 3: Interface als Vertrag am Produkt (Shop).
+// Dein Job: Produkt implementiert beide Verträge, bis produkt_test.ts grün ist.
+export interface Comparable<T> {
+  compareTo(other: T): number; // <0: dieses kleiner · 0: gleich · >0: größer
+}
+
+export interface Versendbar {
+  versandkosten(): number; // in Cent
+}
+
+export class Produkt implements Comparable<Produkt>, Versendbar {
+  readonly name: string;
+  private preisCent: number;
+  private gewichtKg: number;
+
+  constructor(name: string, preisCent: number, gewichtKg: number) {
+    if (preisCent < 0) {
+      throw new Error(`Preis darf nicht negativ sein (war ${preisCent})`);
+    }
+    if (gewichtKg < 0) {
+      throw new Error(`Gewicht darf nicht negativ sein (war ${gewichtKg})`);
+    }
+    this.name = name;
+    this.preisCent = preisCent;
+    this.gewichtKg = gewichtKg;
+  }
+
+  get preis(): number {
+    return this.preisCent;
+  }
+
+  // Vertrag 1 — Vergleich nach preisCent.
+  compareTo(other: Produkt): number {
+    return this.preisCent - other.preisCent;
+  }
+
+  // Vertrag 2 — noch nicht implementiert.
+  versandkosten(): number {
+    return 0;
+  }
+
+  toString(): string {
+    return `${this.name} (${
+      (this.preisCent / 100).toFixed(2)
+    } €, ${this.gewichtKg} kg)`;
+  }
+}
+
+// Structural typing: Diese Funktion verlangt nur die FORM von Versendbar.
+// Warum kompiliert akzeptiereVersendbar({ versandkosten: () => 0 }) ohne
+// implements und ohne class?
+// → TypeScript prüft strukturell (duck typing auf Typebene): Ein Typ ist
+//   Versendbar, wenn sein Aufbau passt (hier: Methode versandkosten(): number),
+//   nicht wenn er es sagt (implements). Nur die Form zählt — „was kannst du",
+//   nicht „wer bist du".
+export function akzeptiereVersendbar(v: Versendbar): number {
+  return v.versandkosten();
+}

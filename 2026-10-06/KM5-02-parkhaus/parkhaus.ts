@@ -27,6 +27,9 @@ export class Parkhaus {
   }
 
   einfahren(anzahl: number): void {
+    if (anzahl <= 0) {
+      throw new Error(`Anzahl muss positiv sein (war ${anzahl})`);
+    }
     if (anzahl > this.kapazitaet - this.belegt) {
       throw new Error(`Nur ${this.kapazitaet - this.belegt} Plätze frei`);
     }
@@ -34,6 +37,9 @@ export class Parkhaus {
   }
 
   ausfahren(anzahl: number): void {
+    if (anzahl <= 0) {
+      throw new Error(`Anzahl muss positiv sein (war ${anzahl})`);
+    }
     if (anzahl > this.belegt) {
       throw new Error(`Nur ${this.belegt} Fahrzeuge im Haus`);
     }

@@ -13,6 +13,19 @@ Deno.test("ausfahren über Belegung wirft", () => {
   assertThrows(() => p.ausfahren(3), Error, "Fahrzeuge");
 });
 
+// Invarianten-Schutz: Negative oder 0 Argumente werden abgefangen
+Deno.test("einfahren mit negativer oder 0 Anzahl wirft", () => {
+  const p = new Parkhaus(10, 2);
+  assertThrows(() => p.einfahren(-5), Error, "positiv");
+  assertThrows(() => p.einfahren(0), Error, "positiv");
+});
+
+Deno.test("ausfahren mit negativer oder 0 Anzahl wirft", () => {
+  const p = new Parkhaus(10, 5);
+  assertThrows(() => p.ausfahren(-3), Error, "positiv");
+  assertThrows(() => p.ausfahren(0), Error, "positiv");
+});
+
 // Grüner Pfad: gültiger Übergang.
 Deno.test("einfahren und ausfahren im erlaubten Bereich", () => {
   const p = new Parkhaus(10, 2);

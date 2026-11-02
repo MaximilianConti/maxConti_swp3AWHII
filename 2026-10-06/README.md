@@ -12,14 +12,14 @@
 | `main_test.ts` | Tests zur Demo (4 Tests) — ersetzt den kaputten Starter, siehe unten |
 | `deno.json` | Tasks `demo`, `test`, `dev` |
 | `KM5-01-konto/` | HÜ 1: Klasse `Konto` mit `einzahlen()` + `equals()` (3 Tests) |
-| `KM5-02-parkhaus/` | HÜ 2: `Parkhaus` mit `einfahren()` / `ausfahren()` (3 Tests) |
+| `KM5-02-parkhaus/` | HÜ 2: `Parkhaus` mit `einfahren()` / `ausfahren()` (5 Tests inkl. Invarianten-Schutz gegen negative Zahlen) |
 | `KM5-03-versand/` | HÜ 3: Versandkosten nach Gewicht, `verschickeAlles()` (2 Tests) |
 
 ## Ausführen
 
 ```bash
 deno task demo    # 6 Konsolenzeilen: false/true/true und true/false/false
-deno task test    # 12 passed | 0 failed (main_test + die 3 KM5-Ordner)
+deno task test    # 14 passed | 0 failed (main_test + die 3 KM5-Ordner)
 ```
 
 Einzelne Übungen: `cd KM5-01-konto && deno task test`

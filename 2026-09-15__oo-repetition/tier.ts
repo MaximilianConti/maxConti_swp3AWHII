@@ -5,6 +5,9 @@ export class Tier {
   private gewicht: number;
 
   constructor(name: string, gewicht: number) {
+    if (gewicht <= 0) {
+      throw new Error(`Gewicht muss positiv sein (war ${gewicht})`);
+    }
     this.name = name;
     this.gewicht = gewicht;
   }
@@ -14,6 +17,9 @@ export class Tier {
   }
 
   fuettern(kg: number): void {
+    if (kg <= 0) {
+      throw new Error(`Futtermenge muss positiv sein (war ${kg})`);
+    }
     this.gewicht += kg;
   }
 

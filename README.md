@@ -6,6 +6,7 @@ Lehrer: **Prof. Georg Ernst Graf**
 
 ## Aufgabenübersicht
 
+- **2026-11-09:** [2026-11-09_6_millarden_dollar_bitcoins_lost/](./2026-11-09_6_millarden_dollar_bitcoins_lost/) — Security Awareness: Knowledge-Check (75/75 Punkte, Videoanalyse Binance/Polymarket/Ledger), Praxishärtung mit Subresource Integrity (SRI) Hash & Deno-Berechtigungen
 - **2026-10-06:** [2026-10-06/](./2026-10-06/) — OOP in TypeScript: Interfaces & `equals`-Methode + KM5-Hausübungen 1–3 (Konto, Parkhaus mit Invarianten-Schutz, Versandgut)
 - **2026-09-29:** [2026-09-29__interfaces/](./2026-09-29__interfaces/) — HÜ Produkt implements `Comparable` & `Versendbar` (Structural Typing)
 - **2026-09-22:** [2026-09-22__kapselung/](./2026-09-22__kapselung/) — HÜ Fahrzeug-Invarianten fail-fast
